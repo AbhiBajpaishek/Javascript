@@ -8,11 +8,9 @@ function contentTypeRadioHandler() {
   if (jsonTypeRadio.checked == true) {
     jsonType.style.display = "block";
     customType.style.display = "none";
-    console.log("JSON Type Visible");
   } else {
     jsonType.style.display = "none";
     customType.style.display = "block";
-    console.log("JSON Type Hidden");
   }
 }
 
@@ -44,7 +42,6 @@ function addParameterControl() {
 
 
 function removeParameterControl(e,id){
-  console.log(e.getAttribute('id'));
   let customType = document.getElementById("customType");
   customType.removeChild(document.getElementById(id));
 
@@ -59,21 +56,20 @@ function requestHandler(e){
     
     if(contentType=='JSON')
     {
-      console.log(contentType);
-      requestBody=JSON.stringify(document.getElementById('requestBody').value);
+      requestBody=document.getElementById('requestBody').value;
     }
     else{
       let customType = document.getElementById("customType").children;
-      
-      customType.forEach(element => {
+      requestBody=new Object();
+      Array.from(customType).forEach(element => {
+        console.log(element);
         let id= element.getAttribute('id');
-        let key= element.getElementById(`key${id}`).value;
-        let value= element.getElementById(`value${id}`).value;
+        let key= document.getElementById(`key${id}`).value;
+        let value= document.getElementById(`value${id}`).value;
         if(key.length>0 && value.length>0 )
-          requestUrl+='?'+ key + '='+value;
-        
+          requestBody[key]=value;
       });
-      console.log(requestUrl);
+      console.log(requestBody);
       
     }
     if(requesType=='GET')
@@ -87,10 +83,9 @@ function requestHandler(e){
 function getData(url)
 {
   fetch(url)
-    .then(response => response.json())
-    .then(json => {
-      console.log(json);
-      document.getElementById('responseTxt').value=json;
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('responseTxt').value=data;
     });
 }
 
@@ -98,14 +93,16 @@ function postData(url,requestBody)
 {
   const params={
     method:'post',
+    body:JSON.stringify(requestBody),
     headers:{
       'Content-type':'application/json'
-    },
-    body:requestBody
+    }
   };
-  fetch(url,params).then((response)=>{
-      return response.text();
-  }).then((data)=>{
-    document.getElementById('responseTxt').value=JSON.parse(data);
-  });
+  fetch(url,params)
+    .then(response => response.text())
+    .then(data => {
+      console.log(data);
+      document.getElementById('responseTxt').value=data;
+    })
+    .catch(error => console.log(error));
 }
