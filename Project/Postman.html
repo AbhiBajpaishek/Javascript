@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postmaster</title>
+    <link href="postmaster.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-items"> 
+                <li class="navbar-item"><a href=""><strong>PostMaster</strong></a></li>
+                <li class="navbar-item"><a href="">HOME</a></li>
+                <li class="navbar-item"><a href="">About Us</a></li>
+                <li class="navbar-item"><a href="">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+      <h3>Welcome to Postmaster</h3>
+      <form class="form-postman" >
+        <div class="form-row">
+          <div class="label">URL</div>
+          <div class="input"><input type="text" class="txtBox" id="requestUrl" placeholder="Enter Request URL" /></div>
+        </div>
+        <div class="form-row">
+          <div class="label">Request Type</div>
+          <div class="label">
+                <div><input type="radio" text="GET" name="request-type-radio" checked id="getRadio"> GET </div>
+                <div><input type="radio" text="POST" name="request-type-radio" id="postRadio"> POST </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="label">Content Type</div>
+            <div class="label">
+                  <div><input type="radio" text="JSON" name="content-type-radio" checked id="jsonTypeRadio" onchange="contentTypeRadioHandler()"> JSON </div>
+                  <div><input type="radio" text="Customer Parameters" name="content-type-radio" id="customTypeRadio" onchange="contentTypeRadioHandler()"> Customer Parameters </div>
+            </div>
+          </div>
+
+          <div class="form-row" id="jsonType">
+                <div class="label">Enter Request JSON </div>
+                <div class="label">
+                    <textarea class="txtBox bigTxtBox" id="requestBody" ></textarea>
+                </div>
+          </div>
+
+          <div class="form-row" id="customType">
+            <div id="1">
+            <div class="label" id="parameter1">
+              Parameter 1
+            </div>
+
+            <div class="label">
+              <input type="text" class="parameterBox" placeholder="Enter Parameter 1 Key" id="key1"></input>
+            </div>
+
+            <div class="label">
+              <input type="text" class="parameterBox" placeholder="Enter Parameter 1 Value" id="value1"></input>
+            </div>
+
+            <div class="label">
+              <input type="button" value="+" class="addBtn" onclick="addParameterControl(this)">
+            </div>
+
+          </div>
+          </div>
+
+          <input type="button" class="primaryBtn" onclick="requestHandler(this)" value="Submit">
+          <br/>
+          <br/>
+          <hr>
+          <div class="form-row">
+            <div class="label">Response </div>
+            <div class="label">
+                <textarea class="response" id="responseTxt"></textarea>
+            </div>
+          </div>
+      </form>
+    </div>
+  </body>
+  <script src="postman.js"></script>
+</html>

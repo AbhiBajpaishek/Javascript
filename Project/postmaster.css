@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar{
+    background-color: #009688;
+    padding: 0.8rem;
+}
+
+.navbar-item{
+    display: inline-block;
+    margin: 0px 0.8rem;
+    cursor: pointer;
+}
+
+.navbar-item a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.container{
+    margin: 2rem 18rem;
+}
+
+.form-postman{
+    margin: 1rem 0rem;
+}
+
+.form-row{
+    margin: 1rem 0rem ;
+}
+
+
+.label{
+    display: inline-block;
+    width: 11.7rem;
+    vertical-align: top;
+}
+
+.input{
+    display: inline-block;
+}
+
+.txtBox{
+    height: 1.5rem;
+    width: 35rem;
+}
+
+.bigTxtBox{
+    height:4rem;
+}
+
+.addBtn{
+    background-color: #009688;
+    color: white;
+    padding: 0 0.5rem;
+    height: 1.3rem;
+    width: 3rem;
+    cursor: pointer;
+}
+
+
+
+.primaryBtn{
+    background-color: #009688;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+}
+
+.response{
+    background-color: black;
+    color: white;
+    height: 7rem;
+    width: 35rem;
+    cursor: text;
+}
+
+
