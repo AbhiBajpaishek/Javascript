@@ -93,7 +93,7 @@ function postData(url,requestBody)
 {
   const params={
     method:'post',
-    body:JSON.stringify(requestBody),
+    body:(requestBody),
     headers:{
       'Content-type':'application/json'
     }
